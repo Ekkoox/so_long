@@ -1,10 +1,29 @@
-#include "../lib/mlx/mlx.h"
-#include "../lib/libft/libft.h"
-#include "../lib/ft_printf/ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/04 16:56:19 by enschnei          #+#    #+#             */
+/*   Updated: 2024/01/04 18:57:14 by enschnei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// int input(int keycoe, t_vars *vars)
+// #include "../so_long.h"
+
+// int input(int keycode, t_vars *vars)
 // {
-// 	ft_printf("Hello from key_hook!\n");
+	
+// 	if (keycode == 100 || keycode == 65363)
+// 		vars->player.x += 64;
+// 	else if (keycode == 97 || keycode == 65361)
+// 		vars->player.x -= 64;
+// 	else if (keycode == 119 || keycode == 65362)
+// 		vars->player.y -= 64;
+// 	else if (keycode == 115 || keycode == 65364)
+// 		vars->player.y += 64;
+// 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->img, vars->player.x, vars->player.y);
 // 	return(0);
 // }
 
