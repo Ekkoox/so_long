@@ -1,6 +1,7 @@
 NAME = so_long
 
-C_FILES = test.c
+C_FILES = input.c\
+
 SRCS = $(addprefix srcs/,$(C_FILES))
 
 CFLAGS = -Wall -Wextra -Werror -g3 -I includes/
