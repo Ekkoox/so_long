@@ -1,6 +1,7 @@
 NAME = so_long
 
 C_FILES = input.c\
+			sprite.c\
 
 SRCS = $(addprefix srcs/,$(C_FILES))
 
