@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.c                                           :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/08 18:46:36 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:56:17 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char *read_map(char *path)
+static char *read_maps(char *path)
 {
 	int i;
 	int fd;
@@ -48,7 +48,7 @@ char **split_map(char *path)
 	char **split;
 	char *stack;
 	
-	stack = read_map(path);
+	stack = read_maps(path);
 	split = ft_split(stack, '\n');
 	free(stack);
 	return(split);

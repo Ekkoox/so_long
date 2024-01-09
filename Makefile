@@ -1,7 +1,9 @@
 NAME = so_long
 
 C_FILES = input.c\
-			sprite.c\
+			main.c\
+			read_map.c\
+			print_img.c\
 
 SRCS = $(addprefix srcs/,$(C_FILES))
 
