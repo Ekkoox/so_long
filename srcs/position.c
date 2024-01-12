@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 16:56:12 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/12 19:14:26 by enschnei         ###   ########.fr       */
+/*   Created: 2024/01/12 14:31:42 by enschnei          #+#    #+#             */
+/*   Updated: 2024/01/12 19:00:14 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int ac, char **av)
+void get_start_position(t_vars *vars)
 {
 	int x;
 	int y;
-	t_vars vars;
-	(void)ac;
 	
-	x = 0;
 	y = 0;
-	vars.map = split_map(av[1]);
-	get_start_position(&vars);
-	vars.mlx = mlx_init();
-	vars.mlx_win = mlx_new_window(vars.mlx, 1920 / 2, 1080 / 2, "Hello world!");
-	set_up_img(&vars);
-	print_texture(&vars);
-	mlx_hook(vars.mlx_win, 33, 131072, cross_close, &vars);
-	mlx_key_hook(vars.mlx_win, input, &vars);
-	mlx_loop(vars.mlx);
+	while(vars->map[y] != NULL)
+	{
+		x = 0;
+		while(vars->map[y][x] != '\0')
+		{
+			if(vars->map[y][x] == 'P')
+			{
+				vars->player.x = x * 64;
+				vars->player.y = y * 64;
+				return;
+			}
+			x++;
+		}
+		y++;	
+	}
 }

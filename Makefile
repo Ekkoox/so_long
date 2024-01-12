@@ -4,6 +4,7 @@ C_FILES = input.c\
 			main.c\
 			read_map.c\
 			print_img.c\
+			position.c\
 
 SRCS = $(addprefix srcs/,$(C_FILES))
 
