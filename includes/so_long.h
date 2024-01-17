@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/12 19:14:31 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:34:13 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ typedef struct s_vars {
 }				t_vars;
 
 int 	input(int keycode, t_vars *vars);
+int		esc_close(int keycode, t_vars *vars);
 int 	cross_close(t_vars *vars);
 char	**split_map(char *path);
 void	set_up_img(t_vars *vars);
 void	print_imgs(t_vars *vars);
 void 	print_texture(t_vars *vars);
 void 	get_start_position(t_vars *vars);
+void 	delete_char(t_vars *vars);
+
 
 #endif
