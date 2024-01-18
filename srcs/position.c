@@ -6,43 +6,49 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:31:42 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/17 17:35:09 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:29:08 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void get_start_position(t_vars *vars)
+void	get_start_position(t_vars *vars)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	y = 0;
-	while(vars->map[y] != NULL)
+	while (vars->map[y] != NULL)
 	{
 		x = 0;
-		while(vars->map[y][x] != '\0')
+		while (vars->map[y][x] != '\0')
 		{
-			if(vars->map[y][x] == 'P')
+			if (vars->map[y][x] == 'P')
 			{
 				vars->player.x = x;
 				vars->player.y = y;
-				return;
+				return ;
 			}
 			x++;
 		}
-		y++;	
+		y++;
 	}
 }
-void delete_char(t_vars *vars)
+int	wall_colision(t_vars *vars, int moveX, int moveY)
 {
-	int x;
-	int y;
-	int tmp;
+	int	newX;
+	int	newY;
 
-	x = vars->player.x;
-	y = vars->player.y;
-	
-	tmp = vars->map[y][x];
-	tmp = mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->imgs.img_floor, (64 * x), (64 * y));
+	// int len;
+	newX = vars->player.x + moveX;
+	newY = vars->player.y + moveY;
+	if (newX < 0 || newX >= 30 || newY < 0 || newY >= 16
+		|| vars->map[newY][newX] == '1') // modifier les valeurs
+		return (1);
+	return (0);
 }
+
+// void	harvest_object(t_vars *vars)
+// {
+
+// }

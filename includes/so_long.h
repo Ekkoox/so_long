@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/17 18:34:13 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:06:56 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_vars {
 	void 		*mlx;
 	void 		*mlx_win;
 	char 		**map;
+	char		*map_x;
+	char		*map_y;
 	t_player	player;
 	t_imgs		imgs;
 }				t_vars;
@@ -45,6 +47,7 @@ typedef struct s_vars {
 int 	input(int keycode, t_vars *vars);
 int		esc_close(int keycode, t_vars *vars);
 int 	cross_close(t_vars *vars);
+int 	wall_colision(t_vars *vars, int moveX, int moveY); 
 char	**split_map(char *path);
 void	set_up_img(t_vars *vars);
 void	print_imgs(t_vars *vars);
