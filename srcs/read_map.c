@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/18 17:33:31 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:37:43 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,14 @@ char	**split_map(char *path)
 	split = ft_split(stack, '\n');
 	free(stack);
 	return (split);
+}
+
+size_t count_ligne_split(char *split)
+{
+	size_t y;
+
+	y = 0;
+	while(split[y])
+		y++;	
+	return(y);
 }

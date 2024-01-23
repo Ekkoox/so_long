@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:31:42 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/18 17:29:08 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:22:02 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,21 @@ void	get_start_position(t_vars *vars)
 }
 int	wall_colision(t_vars *vars, int moveX, int moveY)
 {
-	int	newX;
-	int	newY;
+	size_t	newX;
+	size_t	newY;
 
-	// int len;
+	// int count;
+	// count = 0;
 	newX = vars->player.x + moveX;
 	newY = vars->player.y + moveY;
-	if (newX < 0 || newX >= 30 || newY < 0 || newY >= 16
-		|| vars->map[newY][newX] == '1') // modifier les valeurs
+	if (newX < 0 || newX >= ft_strlen(vars->map[0]) || newY < 0
+		|| newY >= count_ligne_split(vars->map[0])
+		|| vars->map[newY][newX] == '1')
 		return (1);
 	return (0);
 }
 
-// void	harvest_object(t_vars *vars)
+// int	harvest_object(t_vars *vars)
 // {
 
 // }

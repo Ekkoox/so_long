@@ -6,54 +6,70 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/18 17:06:56 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:05:55 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../lib/mlx/mlx.h"
-#include "../lib/libft/libft.h"
-#include "../lib/ft_printf/ft_printf.h"
-#include <stdlib.h>
-#include <fcntl.h>
-#include <X11/Xlib.h>
-#include <X11/keysym.h>
+# include "../lib/ft_printf/ft_printf.h"
+# include "../lib/libft/libft.h"
+# include "../lib/mlx/mlx.h"
+# include <X11/Xlib.h>
+# include <X11/keysym.h>
+# include <fcntl.h>
+# include <stdlib.h>
 
-typedef struct s_player {
-	int x;
-	int y;
+typedef struct s_player
+{
+	int			x;
+	int			y;
 }				t_player;
 
-typedef struct s_imgs {
-	void *img_floor;
-	void *img_object;
-	void *img_wall;
-	void *img_exit;
-	void *img_char;
+typedef struct s_imgs
+{
+	void		*img_floor;
+	void		*img_object;
+	void		*img_wall;
+	void		*img_exit;
+	void		*img_char;
 }				t_imgs;
 
-typedef struct s_vars {
-	void 		*mlx;
-	void 		*mlx_win;
-	char 		**map;
+typedef struct s_vars
+{
+	void		*mlx;
+	void		*mlx_win;
 	char		*map_x;
 	char		*map_y;
+	char		**map;
 	t_player	player;
 	t_imgs		imgs;
 }				t_vars;
 
-int 	input(int keycode, t_vars *vars);
-int		esc_close(int keycode, t_vars *vars);
-int 	cross_close(t_vars *vars);
-int 	wall_colision(t_vars *vars, int moveX, int moveY); 
-char	**split_map(char *path);
-void	set_up_img(t_vars *vars);
-void	print_imgs(t_vars *vars);
-void 	print_texture(t_vars *vars);
-void 	get_start_position(t_vars *vars);
-void 	delete_char(t_vars *vars);
+enum keys
+{
+	KEY_ESC = 65307,
+	KEY_W = 100,
+	KEY_UP = 65363,
+	KEY_S = 97,
+	KEY_DOWN = 65361,
+	KEY_A = 119,
+	KEY_LEFT = 65362,
+	KEY_D = 115,
+	KEY_RIGHT = 65364,
+};
 
+int				input(int keycode, t_vars *vars);
+int				esc_close(int keycode, t_vars *vars);
+int				cross_close(t_vars *vars);
+int				wall_colision(t_vars *vars, int moveX, int moveY);
+size_t			count_ligne_split(char *split);
+char			**split_map(char *path);
+void			set_up_img(t_vars *vars);
+void			print_imgs(t_vars *vars);
+void			print_texture(t_vars *vars);
+void			get_start_position(t_vars *vars);
+void			delete_char(t_vars *vars);
 
 #endif
