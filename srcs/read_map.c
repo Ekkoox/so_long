@@ -6,31 +6,13 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/23 13:37:43 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:16:13 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// static char *read_maps_1(char *s, char *stack, int fd, int i)
-// {
-// 	char *tmp;
-
-// 	i = read(fd, s, 10000);
-// 	if (i == -1)
-// 	{
-// 		free(stack);
-// 		free(s);
-// 		return (NULL);
-// 	}
-// 	s[i] = '\0';
-// 	tmp = stack;
-// 	stack = ft_strjoin(stack, s);
-// 	free(tmp);
-// 	return(stack);
-// }
-
-static char	*read_maps_2(char *path)
+static char	*read_maps(char *path)
 {
 	int		i;
 	int		fd;
@@ -47,12 +29,6 @@ static char	*read_maps_2(char *path)
 	while (i != 0)
 	{
 		i = read(fd, s, 10000);
-		if (i == -1)
-		{
-			free(stack);
-			free(s);
-			return (NULL);
-		}
 		s[i] = '\0';
 		tmp = stack;
 		stack = ft_strjoin(stack, s);
@@ -61,24 +37,24 @@ static char	*read_maps_2(char *path)
 	close(fd);
 	return (free(s), stack);
 }
-// read_maps_1(s, stack, fd, i);
+
 char	**split_map(char *path)
 {
-	char **split;
-	char *stack;
+	char	**split;
+	char	*stack;
 
-	stack = read_maps_2(path);
+	stack = read_maps(path);
 	split = ft_split(stack, '\n');
 	free(stack);
 	return (split);
 }
 
-size_t count_ligne_split(char *split)
+size_t	count_ligne_split(char *split)
 {
-	size_t y;
+	size_t	y;
 
 	y = 0;
-	while(split[y])
-		y++;	
-	return(y);
+	while (split[y])
+		y++;
+	return (y);
 }

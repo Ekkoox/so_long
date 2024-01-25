@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/23 19:05:55 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:12:07 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct s_player
 	int			y;
 }				t_player;
 
+typedef struct s_count
+{
+	int			count_P;
+	int			count_E;
+	int			count_C;
+}				t_count;
+
 typedef struct s_imgs
 {
 	void		*img_floor;
@@ -34,6 +41,10 @@ typedef struct s_imgs
 	void		*img_wall;
 	void		*img_exit;
 	void		*img_char;
+	void		*img_left_char;
+	void		*img_right_char;
+	void		*img_up_char;
+	void		*img_down_char;
 }				t_imgs;
 
 typedef struct s_vars
@@ -45,6 +56,7 @@ typedef struct s_vars
 	char		**map;
 	t_player	player;
 	t_imgs		imgs;
+	t_count		count;
 }				t_vars;
 
 enum keys
@@ -64,12 +76,16 @@ int				input(int keycode, t_vars *vars);
 int				esc_close(int keycode, t_vars *vars);
 int				cross_close(t_vars *vars);
 int				wall_colision(t_vars *vars, int moveX, int moveY);
-size_t			count_ligne_split(char *split);
+int				error_map(t_vars *vars);
+int				finish_map(t_vars *vars);
+int				count_object(t_vars *vars);
+int				handle_key(int keycode);
 char			**split_map(char *path);
 void			set_up_img(t_vars *vars);
 void			print_imgs(t_vars *vars);
 void			print_texture(t_vars *vars);
 void			get_start_position(t_vars *vars);
 void			delete_char(t_vars *vars);
+size_t			count_ligne_split(char *split);
 
 #endif

@@ -5,6 +5,8 @@ C_FILES = input.c\
 			read_map.c\
 			print_img.c\
 			position.c\
+			check_map.c\
+			animation.c\
 
 SRCS = $(addprefix srcs/,$(C_FILES))
 
