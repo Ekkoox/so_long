@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/25 18:12:07 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:03:24 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,24 @@ typedef struct s_vars
 	t_count		count;
 }				t_vars;
 
-enum keys
+enum			keys
 {
 	KEY_ESC = 65307,
-	KEY_W = 100,
-	KEY_UP = 65363,
-	KEY_S = 97,
-	KEY_DOWN = 65361,
-	KEY_A = 119,
-	KEY_LEFT = 65362,
-	KEY_D = 115,
-	KEY_RIGHT = 65364,
+	KEY_W = 119,
+	KEY_UP = 65362,
+	KEY_S = 115,
+	KEY_DOWN = 65364,
+	KEY_A = 97,
+	KEY_LEFT = 65361,
+	KEY_D = 100,
+	KEY_RIGHT = 65363,
 };
 
 int				input(int keycode, t_vars *vars);
+int				input_up(int keycode, t_vars *vars);
+int				input_left(int keycode, t_vars *vars);
+int				input_right(int keycode, t_vars *vars);
+int				input_down(int keycode, t_vars *vars);
 int				esc_close(int keycode, t_vars *vars);
 int				cross_close(t_vars *vars);
 int				wall_colision(t_vars *vars, int moveX, int moveY);
@@ -81,11 +85,12 @@ int				finish_map(t_vars *vars);
 int				count_object(t_vars *vars);
 int				handle_key(int keycode);
 char			**split_map(char *path);
+void			squid_game(t_vars *vars);
 void			set_up_img(t_vars *vars);
 void			print_imgs(t_vars *vars);
 void			print_texture(t_vars *vars);
 void			get_start_position(t_vars *vars);
 void			delete_char(t_vars *vars);
-size_t			count_ligne_split(char *split);
+size_t			count_ligne_split(char **split);
 
 #endif

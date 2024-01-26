@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:25:56 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/25 17:17:39 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:23:32 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,25 @@ static int count_exit(t_vars *vars)
 	return(vars->count.count_E);
 }
 
+void squid_game(t_vars *vars)
+{
+    if (vars->imgs.img_wall)
+        mlx_destroy_image(vars->mlx, vars->imgs.img_wall);
+    if (vars->imgs.img_char)
+        mlx_destroy_image(vars->mlx, vars->imgs.img_char);
+    if (vars->imgs.img_floor)
+        mlx_destroy_image(vars->mlx, vars->imgs.img_floor);
+    if (vars->imgs.img_exit)
+        mlx_destroy_image(vars->mlx, vars->imgs.img_exit);
+    if (vars->imgs.img_object)
+        mlx_destroy_image(vars->mlx, vars->imgs.img_object);
+    mlx_destroy_window(vars->mlx, vars->mlx_win);
+    mlx_destroy_display(vars->mlx);
+    ft_free(vars->map, count_ligne_split(vars->map) + 1);
+    free(vars->mlx);
+    exit(0);
+}
+
 int error_map(t_vars *vars)
 {
 	int error_start;
@@ -65,9 +84,10 @@ int error_map(t_vars *vars)
 	error_start = count_start(vars);
 	error_exit = count_exit(vars);
 	error_object = count_object(vars);
-	if(error_start >= 2 || error_exit >= 2 || error_object == 0)
+	if(error_start != 1 || error_exit != 1 || error_object == 0)
 	{
 		ft_printf("Invalid map !");
+		ft_free(vars->map, count_ligne_split(vars->map));
 		return(0);	
 	}
 	return(1);
