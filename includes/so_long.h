@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/26 17:03:24 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:58:37 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_vars
 	char		*map_x;
 	char		*map_y;
 	char		**map;
+	char		**cpy_map;
 	t_player	player;
 	t_imgs		imgs;
 	t_count		count;
@@ -84,6 +85,10 @@ int				error_map(t_vars *vars);
 int				finish_map(t_vars *vars);
 int				count_object(t_vars *vars);
 int				handle_key(int keycode);
+int				impossible_map(t_vars *vars);
+int				check_first_line(t_vars *vars);
+// int				check_last_line(t_vars *vars);
+int				check_first_column(t_vars *vars);
 char			**split_map(char *path);
 void			squid_game(t_vars *vars);
 void			set_up_img(t_vars *vars);
@@ -91,6 +96,8 @@ void			print_imgs(t_vars *vars);
 void			print_texture(t_vars *vars);
 void			get_start_position(t_vars *vars);
 void			delete_char(t_vars *vars);
+void			ft_splitdup(t_vars *vars);
+void			back_track(char **split, int x, int y);
 size_t			count_ligne_split(char **split);
 
 #endif
