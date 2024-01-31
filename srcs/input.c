@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:56:19 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/29 14:53:28 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:17:05 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int	input(int keycode, t_vars *vars)
  	else if (keycode == KEY_W || keycode == KEY_UP)
  		stash = input_up(keycode, vars);
 	if (finish_map(vars) == 1)
+	{
+		ft_printf("GOOD JOB ! You finish the map with %d step !\n", count);
 		squid_game(vars);
+	}
 	if(stash == 1)
 		ft_printf("%d\n", ++count);
 	return(0);

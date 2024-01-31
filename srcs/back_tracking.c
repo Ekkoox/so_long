@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:30:47 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/29 17:03:18 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:45:20 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	impossible_map(t_vars *vars)
         {
             if (vars->cpy_map[y][x] == 'C' || vars->cpy_map[y][x] == 'E')
 			{
-				ft_printf("Invalid map !");
+				ft_printf("!!! ERROR !!! The map can't be finished !");
                 exit(0);
 			}
             x++;
@@ -66,5 +66,3 @@ int	impossible_map(t_vars *vars)
     }
 	return(0);
 }
-
-// condition pour pour que map crash si different

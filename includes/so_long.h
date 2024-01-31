@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/29 17:58:37 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:43:32 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ int				count_object(t_vars *vars);
 int				handle_key(int keycode);
 int				impossible_map(t_vars *vars);
 int				check_first_line(t_vars *vars);
-// int				check_last_line(t_vars *vars);
+int				check_last_line(t_vars *vars);
 int				check_first_column(t_vars *vars);
+int				check_last_column(t_vars *vars);
+int				check_size(t_vars *vars);
 char			**split_map(char *path);
 void			squid_game(t_vars *vars);
 void			set_up_img(t_vars *vars);

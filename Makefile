@@ -8,7 +8,7 @@ C_FILES = input.c\
 			check_map.c\
 			animation.c\
 			back_tracking.c\
-			size_map.c\
+			check_obstacles.c\
 
 SRCS = $(addprefix srcs/,$(C_FILES))
 

@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/29 16:05:05 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:40:15 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	**split_map(char *path)
 {
 	char	**split;
 	char	*stack;
-
+	
 	stack = read_maps(path);
 	split = ft_split(stack, '\n');
 	free(stack);

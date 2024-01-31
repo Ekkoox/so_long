@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:25:56 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/29 16:28:14 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:33:11 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,42 @@ void	squid_game(t_vars *vars)
 	exit(0);
 }
 
+static int	check_other_characters(t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	x = 0;
+	while (vars->map[y] != NULL)
+	{
+		while (vars->map[y][x])
+		{
+			if (vars->map[y][x] != '1' || vars->map[y][x] != '0'
+				|| vars->map[y][x] != 'C' || vars->map[y][x] != 'E'
+				|| vars->map[y][x] != 'P')
+				return(0);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return (1);
+}
+
 int	error_map(t_vars *vars)
 {
-	int	error_start;
-	int	error_exit;
-	int	error_object;
-
-	error_start = count_start(vars);
-	error_exit = count_exit(vars);
-	error_object = count_object(vars);
-	if (error_start != 1 || error_exit != 1 || error_object == 0)
+	if (count_start(vars) != 1 || count_exit(vars) != 1
+		|| count_object(vars) == 0 || check_other_characters(vars) == 0)
 	{
-		ft_printf("Invalid map !");
+		ft_printf("!!! ERROR !!! Invalid map !\n");
+		ft_free(vars->map, count_ligne_split(vars->map));
+		return (0);
+	}
+	if (check_first_line(vars) == 0 || check_last_column(vars) == 0
+		|| check_last_line(vars) == 0 || check_first_column(vars) == 0)
+	{
+		ft_printf("!!! ERROR !!! The map is not surrounded by obstacles !\n");
 		ft_free(vars->map, count_ligne_split(vars->map));
 		return (0);
 	}
