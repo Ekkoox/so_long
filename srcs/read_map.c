@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/31 18:40:15 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:06:29 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,32 @@ static char	*read_maps(char *path)
 	return (free(s), stack);
 }
 
+static int check_newline(char *stack)
+{
+	int i;
+
+	i = 0;
+	while (stack[i] != '\0')
+	{
+		if (stack[i] == '\n' && stack[i + 1] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 char	**split_map(char *path)
 {
 	char	**split;
 	char	*stack;
 	
 	stack = read_maps(path);
+	if(check_newline(stack) == 1)
+	{
+		ft_printf("!!! ERRROR !!! Empty line detected !\n");
+		free(stack);
+		exit(0);
+	}
 	split = ft_split(stack, '\n');
 	free(stack);
 	return (split);

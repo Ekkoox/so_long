@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:25:56 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/31 18:33:11 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:31:32 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ static int	check_other_characters(t_vars *vars)
 	{
 		while (vars->map[y][x])
 		{
-			if (vars->map[y][x] != '1' || vars->map[y][x] != '0'
-				|| vars->map[y][x] != 'C' || vars->map[y][x] != 'E'
-				|| vars->map[y][x] != 'P')
+			if (vars->map[y][x] != '1' && vars->map[y][x] != '0'
+				&& vars->map[y][x] != 'C' && vars->map[y][x] != 'E'
+				&& vars->map[y][x] != 'P')
 				return(0);
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:55:35 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/25 18:23:35 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:31:21 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	set_up_img(t_vars *vars)
 	vars->imgs.img_wall = mlx_xpm_file_to_image(vars->mlx, "wall.xpm", &x, &y);
 	vars->imgs.img_exit = mlx_xpm_file_to_image(vars->mlx, "exit.xpm", &x, &y);
 }
+
+// static void(t_vars *vars)
+// {
+		
+// }
 
 void	print_texture(t_vars *vars)
 {
