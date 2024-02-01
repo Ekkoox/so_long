@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 12:30:13 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:33:17 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				input_right(int keycode, t_vars *vars);
 int				input_down(int keycode, t_vars *vars);
 int				esc_close(int keycode, t_vars *vars);
 int				cross_close(t_vars *vars);
-int				wall_colision(t_vars *vars, int moveX, int moveY);
+int				wall_colision(t_vars *vars, int move_x, int move_y);
 int				error_map(t_vars *vars);
 int				finish_map(t_vars *vars);
 int				count_object(t_vars *vars);

@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:30:47 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/31 16:45:20 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:20:28 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,28 @@ void	back_track(char **split, int x, int y)
 	if (split[y][x + 1] != '1' && split[y][x + 1] != 'G')
 		back_track(split, x + 1, y);
 }
+
 int	impossible_map(t_vars *vars)
 {
-    int y;
-    int x;
+	int	y;
+	int	x;
 
-    y = 0;
-    while (vars->cpy_map[y])
-    {
-        x = 0;
-        while(vars->cpy_map[y][x])
-        {
-            if (vars->cpy_map[y][x] == 'C' || vars->cpy_map[y][x] == 'E')
+	y = 0;
+	while (vars->cpy_map[y])
+	{
+		x = 0;
+		while (vars->cpy_map[y][x])
+		{
+			if (vars->cpy_map[y][x] == 'C' || vars->cpy_map[y][x] == 'E')
 			{
-				ft_printf("!!! ERROR !!! The map can't be finished !");
-                exit(0);
+				ft_printf("!!! ERROR !!! The map can't be finished !\n");
+				ft_free(vars->map, count_ligne_split(vars->map));
+				ft_free(vars->cpy_map, count_ligne_split(vars->cpy_map));
+				exit(0);
 			}
-            x++;
-        }
-        y++;
-    }
-	return(0);
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }

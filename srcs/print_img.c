@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:55:35 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 12:31:21 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:37:25 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ void	set_up_img(t_vars *vars)
 	x = 64;
 	y = 64;
 	vars->imgs.img_char = mlx_xpm_file_to_image(vars->mlx, "char.xpm", &x, &y);
-	vars->imgs.img_left_char = mlx_xpm_file_to_image(vars->mlx, "char_left.xpm", &x, &y);
-	vars->imgs.img_right_char = mlx_xpm_file_to_image(vars->mlx, "char_right.xpm", &x, &y);
-	vars->imgs.img_up_char = mlx_xpm_file_to_image(vars->mlx, "char_up.xpm", &x, &y);
-	vars->imgs.img_down_char = mlx_xpm_file_to_image(vars->mlx, "char_down.xpm", &x, &y);
+	vars->imgs.img_left_char = mlx_xpm_file_to_image(vars->mlx, "char_left.xpm",
+			&x, &y);
+	vars->imgs.img_right_char = mlx_xpm_file_to_image(vars->mlx,
+			"char_right.xpm", &x, &y);
+	vars->imgs.img_up_char = mlx_xpm_file_to_image(vars->mlx, "char_up.xpm", &x,
+			&y);
+	vars->imgs.img_down_char = mlx_xpm_file_to_image(vars->mlx, "char_down.xpm",
+			&x, &y);
 	vars->imgs.img_floor = mlx_xpm_file_to_image(vars->mlx, "floor.xpm", &x,
 			&y);
 	vars->imgs.img_object = mlx_xpm_file_to_image(vars->mlx, "object.xpm", &x,
@@ -31,11 +35,6 @@ void	set_up_img(t_vars *vars)
 	vars->imgs.img_wall = mlx_xpm_file_to_image(vars->mlx, "wall.xpm", &x, &y);
 	vars->imgs.img_exit = mlx_xpm_file_to_image(vars->mlx, "exit.xpm", &x, &y);
 }
-
-// static void(t_vars *vars)
-// {
-		
-// }
 
 void	print_texture(t_vars *vars)
 {

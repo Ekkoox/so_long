@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:31:42 by enschnei          #+#    #+#             */
-/*   Updated: 2024/01/29 16:15:43 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:36:38 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,19 @@ void	get_start_position(t_vars *vars)
 		y++;
 	}
 }
-int	wall_colision(t_vars *vars, int moveX, int moveY)
-{
-	size_t	newX;
-	size_t	newY;
 
-	newX = vars->player.x + moveX;
-	newY = vars->player.y + moveY;
-	if (newX < 0 || newX >= ft_strlen(vars->map[0]) || newY < 0
-		|| newY >= count_ligne_split(vars->map) || vars->map[newY][newX] == '1')
-		return(1);
-	if(count_object(vars) != 0 && vars->map[newY][newX] == 'E')
+int	wall_colision(t_vars *vars, int move_x, int move_y)
+{
+	size_t	new_x;
+	size_t	new_y;
+
+	new_x = vars->player.x + move_x;
+	new_y = vars->player.y + move_y;
+	if (new_x < 0 || new_x >= ft_strlen(vars->map[0]) || new_y < 0
+		|| new_y >= count_ligne_split(vars->map)
+		|| vars->map[new_y][new_x] == '1')
+		return (1);
+	if (count_object(vars) != 0 && vars->map[new_y][new_x] == 'E')
 		return (1);
 	return (0);
 }
@@ -73,7 +75,7 @@ int	count_object(t_vars *vars)
 
 int	finish_map(t_vars *vars)
 {
-	int object;
+	int	object;
 
 	object = count_object(vars);
 	if (vars->map[vars->player.y][vars->player.x] == 'C')
