@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:13:34 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 16:06:40 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:29:32 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,21 @@ int	check_last_column(t_vars *vars)
 
 int	check_size(t_vars *vars)
 {
-	int	first_line;
-	int	last_line;
+	size_t	y;
+	size_t	len;
 
-	first_line = ft_strlen(vars->map[0]);
-	last_line = ft_strlen(vars->map[count_ligne_split(vars->map) - 1]);
-	if (first_line != last_line)
+	y = 0;
+	len = ft_strlen(vars->map[y]);
+	y++;
+	while (vars->map[y])
 	{
-		ft_printf("!!! ERROR !!! The map is not rectangular !\n");
-		ft_free(vars->map, count_ligne_split(vars->map));
-		return (0);
+		if (ft_strlen(vars->map[y]) != len)
+		{
+			ft_printf("!!! ERROR !!! The map is not rectangular!\n");
+			ft_free(vars->map, count_ligne_split(vars->map));
+			return (0);
+		}
+		y++;
 	}
 	return (1);
 }

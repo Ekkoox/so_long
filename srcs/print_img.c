@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:55:35 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 14:37:25 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:26:00 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	set_up_img(t_vars *vars)
 	vars->imgs.img_exit = mlx_xpm_file_to_image(vars->mlx, "exit.xpm", &x, &y);
 }
 
-void	print_texture(t_vars *vars)
+void	print_texture1(t_vars *vars)
 {
 	int	x;
 	int	y;
@@ -56,7 +56,25 @@ void	print_texture(t_vars *vars)
 			else if (vars->map[y][x] == 'C')
 				mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 					vars->imgs.img_object, (64 * x), (64 * y));
-			else if (vars->map[y][x] == 'E')
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+}
+
+void	print_texture2(t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	x = 0;
+	while (vars->map[y] != 0)
+	{
+		while (vars->map[y][x] != '\0')
+		{
+			if (vars->map[y][x] == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 					vars->imgs.img_exit, (64 * x), (64 * y));
 			else if (vars->map[y][x] == 'P')

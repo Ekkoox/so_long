@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 14:33:17 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:26:19 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../lib/ft_printf/ft_printf.h"
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
-# include <X11/Xlib.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -95,7 +94,8 @@ char			**split_map(char *path);
 void			squid_game(t_vars *vars);
 void			set_up_img(t_vars *vars);
 void			print_imgs(t_vars *vars);
-void			print_texture(t_vars *vars);
+void			print_texture1(t_vars *vars);
+void			print_texture2(t_vars *vars);
 void			get_start_position(t_vars *vars);
 void			delete_char(t_vars *vars);
 void			ft_splitdup(t_vars *vars);

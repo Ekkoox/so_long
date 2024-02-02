@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 14:37:00 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:24:42 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	check_newline(char *stack)
 	int	i;
 
 	i = 0;
+	if (stack[0] == '\0')
+		return (1);
 	while (stack[i] != '\0')
 	{
 		if (stack[i] == '\n' && stack[i + 1] == '\n')
