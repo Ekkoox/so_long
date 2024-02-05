@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:25:56 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 17:09:15 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:01:25 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	squid_game(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->imgs.img_object);
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
 	mlx_destroy_display(vars->mlx);
-	ft_free(vars->map, count_ligne_split(vars->map) + 1);
-	ft_free(vars->cpy_map, count_ligne_split(vars->cpy_map) + 1);
+	ft_free(vars->map, count_ligne_split(vars->map));
+	ft_free(vars->cpy_map, count_ligne_split(vars->cpy_map));
 	free(vars->mlx);
 	exit(0);
 }
