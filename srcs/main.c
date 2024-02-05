@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:56:12 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/02 15:26:38 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/05 14:42:21 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int ac, char **av)
 	get_start_position(&vars);
 	ft_splitdup(&vars);
 	back_track(vars.cpy_map, vars.player.x, vars.player.y);
+	for (int i = 0; vars.cpy_map[i]; i++)
+		printf("%s\n", vars.cpy_map[i]);
 	impossible_map(&vars);
 	vars.mlx = mlx_init();
 	vars.mlx_win = mlx_new_window(vars.mlx, 1920, 1080, "so_long enschnei");

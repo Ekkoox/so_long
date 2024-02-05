@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:30:47 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/01 17:20:28 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/05 14:37:59 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,17 @@ void	ft_splitdup(t_vars *vars)
 
 void	back_track(char **split, int x, int y)
 {
-	split[y][x] = 'G';
-	if (split[y - 1][x] != '1' && split[y - 1][x] != 'G')
+	if (split[y][x] == 'E')
+		split[y][x] = 'e';
+	else
+		split[y][x] = 'G';
+	if (split[y - 1][x] != '1' && split[y - 1][x] != 'G' && split[y][x] != 'e')
 		back_track(split, x, y - 1);
-	if (split[y + 1][x] != '1' && split[y + 1][x] != 'G')
+	if (split[y + 1][x] != '1' && split[y + 1][x] != 'G' && split[y][x] != 'e')
 		back_track(split, x, y + 1);
-	if (split[y][x - 1] != '1' && split[y][x - 1] != 'G')
+	if (split[y][x - 1] != '1' && split[y][x - 1] != 'G' && split[y][x] != 'e')
 		back_track(split, x - 1, y);
-	if (split[y][x + 1] != '1' && split[y][x + 1] != 'G')
+	if (split[y][x + 1] != '1' && split[y][x + 1] != 'G' && split[y][x] != 'e')
 		back_track(split, x + 1, y);
 }
 
