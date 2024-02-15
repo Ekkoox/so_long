@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:25:56 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/05 18:01:25 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:23:50 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,34 +56,6 @@ static int	count_exit(t_vars *vars)
 	return (vars->count.count_E);
 }
 
-void	squid_game(t_vars *vars)
-{
-	if (vars->imgs.img_wall)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_wall);
-	if (vars->imgs.img_char)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_char);
-	if (vars->imgs.img_left_char)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_left_char);
-	if (vars->imgs.img_right_char)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_right_char);
-	if (vars->imgs.img_up_char)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_up_char);
-	if (vars->imgs.img_down_char)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_down_char);
-	if (vars->imgs.img_floor)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_floor);
-	if (vars->imgs.img_exit)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_exit);
-	if (vars->imgs.img_object)
-		mlx_destroy_image(vars->mlx, vars->imgs.img_object);
-	mlx_destroy_window(vars->mlx, vars->mlx_win);
-	mlx_destroy_display(vars->mlx);
-	ft_free(vars->map, count_ligne_split(vars->map));
-	ft_free(vars->cpy_map, count_ligne_split(vars->cpy_map));
-	free(vars->mlx);
-	exit(0);
-}
-
 static int	check_other_characters(t_vars *vars)
 {
 	int	x;
@@ -95,9 +67,13 @@ static int	check_other_characters(t_vars *vars)
 	{
 		while (vars->map[y][x])
 		{
-			if (vars->map[y][x] != '1' && vars->map[y][x] != '0'
+			if (BONUS != 1 && vars->map[y][x] != '1' && vars->map[y][x] != '0'
 				&& vars->map[y][x] != 'C' && vars->map[y][x] != 'E'
 				&& vars->map[y][x] != 'P')
+				return (0);
+			if (BONUS == 1 && vars->map[y][x] != '1' && vars->map[y][x] != '0'
+				&& vars->map[y][x] != 'C' && vars->map[y][x] != 'E'
+				&& vars->map[y][x] != 'P' && vars->map[y][x] != 'M')
 				return (0);
 			x++;
 		}

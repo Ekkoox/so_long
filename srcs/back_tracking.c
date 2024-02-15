@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:30:47 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/05 14:37:59 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:19:58 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,25 @@ void	ft_splitdup(t_vars *vars)
 
 void	back_track(char **split, int x, int y)
 {
-	if (split[y][x] == 'E')
-		split[y][x] = 'e';
-	else
-		split[y][x] = 'G';
-	if (split[y - 1][x] != '1' && split[y - 1][x] != 'G' && split[y][x] != 'e')
-		back_track(split, x, y - 1);
-	if (split[y + 1][x] != '1' && split[y + 1][x] != 'G' && split[y][x] != 'e')
-		back_track(split, x, y + 1);
-	if (split[y][x - 1] != '1' && split[y][x - 1] != 'G' && split[y][x] != 'e')
-		back_track(split, x - 1, y);
-	if (split[y][x + 1] != '1' && split[y][x + 1] != 'G' && split[y][x] != 'e')
-		back_track(split, x + 1, y);
+	if (BONUS != 1)
+	{
+		if (split[y][x] == 'E')
+			split[y][x] = 'e';
+		else
+			split[y][x] = 'G';
+		if (split[y - 1][x] != '1' && split[y - 1][x] != 'G'
+			&& split[y][x] != 'e')
+			back_track(split, x, y - 1);
+		if (split[y + 1][x] != '1' && split[y + 1][x] != 'G'
+			&& split[y][x] != 'e')
+			back_track(split, x, y + 1);
+		if (split[y][x - 1] != '1' && split[y][x - 1] != 'G'
+			&& split[y][x] != 'e')
+			back_track(split, x - 1, y);
+		if (split[y][x + 1] != '1' && split[y][x + 1] != 'G'
+			&& split[y][x] != 'e')
+			back_track(split, x + 1, y);
+	}
 }
 
 int	impossible_map(t_vars *vars)
@@ -54,21 +61,53 @@ int	impossible_map(t_vars *vars)
 	int	x;
 
 	y = 0;
-	while (vars->cpy_map[y])
+	if (BONUS != 1)
 	{
-		x = 0;
-		while (vars->cpy_map[y][x])
+		while (vars->cpy_map[y])
 		{
-			if (vars->cpy_map[y][x] == 'C' || vars->cpy_map[y][x] == 'E')
+			x = 0;
+			while (vars->cpy_map[y][x])
 			{
-				ft_printf("!!! ERROR !!! The map can't be finished !\n");
-				ft_free(vars->map, count_ligne_split(vars->map));
-				ft_free(vars->cpy_map, count_ligne_split(vars->cpy_map));
-				exit(0);
+				if (vars->cpy_map[y][x] == 'C' || vars->cpy_map[y][x] == 'E')
+				{
+					ft_printf("!!! ERROR !!! The map can't be finished !\n");
+					ft_free(vars->map, count_ligne_split(vars->map));
+					ft_free(vars->cpy_map, count_ligne_split(vars->cpy_map));
+					exit(0);
+				}
+				x++;
 			}
-			x++;
+			y++;
 		}
-		y++;
+	}
+	return (0);
+}
+
+int	impossible_map_bonus(t_vars *vars)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	if (BONUS == 1)
+	{
+		while (vars->cpy_map[y])
+		{
+			x = 0;
+			while (vars->cpy_map[y][x])
+			{
+				if (vars->cpy_map[y][x] == 'C' || vars->cpy_map[y][x] == 'E'
+					|| vars->cpy_map[y][x] == 'M')
+				{
+					ft_printf("!!! ERROR !!! The map can't be finished !\n");
+					ft_free(vars->map, count_ligne_split(vars->map));
+					ft_free(vars->cpy_map, count_ligne_split(vars->cpy_map));
+					exit(0);
+				}
+				x++;
+			}
+			y++;
+		}
 	}
 	return (0);
 }

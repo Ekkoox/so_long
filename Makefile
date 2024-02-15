@@ -3,10 +3,11 @@ NAME = so_long
 C_FILES = input.c\
 			main.c\
 			read_map.c\
-			print_img.c\
 			position.c\
-			check_map.c\
 			animation.c\
+			check_map.c\
+			print_img.c\
+			enemy_bonus.c\
 			back_tracking.c\
 			check_obstacles.c\
 
@@ -24,6 +25,12 @@ ${NAME}: ${SRCS}
 	make -C lib/libft
 	make -C lib/ft_printf
 	cc ${CFLAGS} ${SRCS} -L lib/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o ${NAME} ${DEPS}
+
+bonus:
+	make -C lib/mlx
+	make -C lib/libft
+	make -C lib/ft_printf
+	cc ${CFLAGS} ${SRCS} -L lib/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o ${NAME} ${DEPS} -D BONUS=1
 
 clean:
 	make -C lib/mlx clean
