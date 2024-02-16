@@ -13,7 +13,7 @@ C_FILES = input.c\
 
 SRCS = $(addprefix srcs/,$(C_FILES))
 
-CFLAGS = -Wall -Werror -Wextra -I includes/
+CFLAGS = -Wall -Werror -Wextra -I includes/ -g
 
 LIB = ft_printf/libftprintf.a libft/libft.a
 DEPS = $(addprefix lib/,$(LIB))

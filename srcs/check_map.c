@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:25:56 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/15 18:23:50 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:51:22 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,20 @@ static int	check_other_characters(t_vars *vars)
 	return (1);
 }
 
-int	error_map(t_vars *vars)
+void	error_map(t_vars *vars)
 {
 	if (count_start(vars) != 1 || count_exit(vars) != 1
 		|| count_object(vars) == 0 || check_other_characters(vars) == 0)
 	{
 		ft_printf("!!! ERROR !!! Invalid map !\n");
 		ft_free(vars->map, count_ligne_split(vars->map));
-		return (0);
+		exit (0);
 	}
 	if (check_first_line(vars) == 0 || check_last_column(vars) == 0
 		|| check_last_line(vars) == 0 || check_first_column(vars) == 0)
 	{
 		ft_printf("!!! ERROR !!! The map is not surrounded by obstacles !\n");
 		ft_free(vars->map, count_ligne_split(vars->map));
-		return (0);
+		exit (0);
 	}
-	return (1);
 }

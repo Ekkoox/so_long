@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:13:34 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/02 15:29:32 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:48:03 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_last_column(t_vars *vars)
 	return (vars->map[y] == NULL);
 }
 
-int	check_size(t_vars *vars)
+void	check_size(t_vars *vars)
 {
 	size_t	y;
 	size_t	len;
@@ -71,9 +71,8 @@ int	check_size(t_vars *vars)
 		{
 			ft_printf("!!! ERROR !!! The map is not rectangular!\n");
 			ft_free(vars->map, count_ligne_split(vars->map));
-			return (0);
+			exit (0);
 		}
 		y++;
 	}
-	return (1);
 }

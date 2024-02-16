@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:30:47 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/15 18:19:58 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:39:51 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ void	ft_splitdup(t_vars *vars)
 	y = 0;
 	vars->cpy_map = malloc(sizeof(char *) * (len + 1));
 	if (!vars->cpy_map)
-		return (free(vars->cpy_map));
+	{	
+		ft_free(vars->map, count_ligne_split(vars->map));
+		ft_free(vars->cpy_map, count_ligne_split(vars->map));
+		exit (0);
+	}
 	while (y < len)
 	{
 		vars->cpy_map[y] = ft_strdup(vars->map[y]);

@@ -6,11 +6,19 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/02 15:24:42 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:07:00 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static bool	extension_invalid(char *path)
+{
+	int	i;
+
+	i = ft_strlen(path) - 4;
+	return (ft_strncmp(path + i, ".ber", 4));
+}
 
 static char	*read_maps(char *path)
 {
@@ -20,12 +28,14 @@ static char	*read_maps(char *path)
 	char	*stack;
 	char	*tmp;
 
+	if (extension_invalid(path))
+		return (NULL);
 	i = 1;
 	fd = open(path, O_RDONLY);
 	s = ft_calloc(10001, sizeof(char));
 	stack = ft_strdup("");
-	if (!s)
-		return (NULL);
+	if (!s || fd == -1)
+		return (free(s), free(stack), NULL);
 	while (i != 0)
 	{
 		i = read(fd, s, 10000);
@@ -60,6 +70,8 @@ char	**split_map(char *path)
 	char	*stack;
 
 	stack = read_maps(path);
+	if (!stack)
+		exit(0);
 	if (check_newline(stack) == 1)
 	{
 		ft_printf("!!! ERRROR !!! Empty line detected !\n");

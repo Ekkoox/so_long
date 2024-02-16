@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/15 18:14:21 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:43:32 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
 # ifndef BONUS
 #  define BONUS 0
@@ -39,19 +40,19 @@ typedef struct s_count
 
 typedef struct s_imgs
 {
-	void		*img_floor;
-	void		*img_object;
-	void		*img_wall;
-	void		*img_exit;
-	void		*img_char;
-	void		*img_left_char;
-	void		*img_right_char;
-	void		*img_up_char;
-	void		*img_down_char;
-	void		*img_enemy;
+	void		*floor;
+	void		*object;
+	void		*wall;
+	void		*exit;
+	void		*chara;
+	void		*left_char;
+	void		*right_char;
+	void		*up_char;
+	void		*down_char;
+	void		*enemy;
 }				t_imgs;
 
-typedef struct s_vars
+typedef struct s_vars64
 {
 	void		*mlx;
 	void		*mlx_win;
@@ -84,7 +85,6 @@ int				input_right(int keycode, t_vars *vars);
 int				input_down(int keycode, t_vars *vars);
 int				esc_close(int keycode, t_vars *vars);
 int				wall_colision(t_vars *vars, int move_x, int move_y);
-int				error_map(t_vars *vars);
 int				finish_map(t_vars *vars);
 int				count_object(t_vars *vars);
 int				handle_key(int keycode);
@@ -94,9 +94,10 @@ int				check_first_line(t_vars *vars);
 int				check_last_line(t_vars *vars);
 int				check_first_column(t_vars *vars);
 int				check_last_column(t_vars *vars);
-int				check_size(t_vars *vars);
 int				squid_game(t_vars *vars);
 int				death_char(t_vars *vars);
+void			error_map(t_vars *vars);
+void			check_size(t_vars *vars);
 void			set_up_img(t_vars *vars);
 void			set_up_img_bonus(t_vars *vars);
 void			print_imgs(t_vars *vars);
