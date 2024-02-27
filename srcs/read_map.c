@@ -6,13 +6,13 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:05:25 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/16 18:07:00 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:01:42 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	extension_invalid(char *path)
+static int	extension_invalid(char *path)
 {
 	int	i;
 

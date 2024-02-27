@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:16:15 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/16 17:43:32 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:23:43 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "../lib/mlx/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
-# include <stdlib.h>
 # include <stdbool.h>
+# include <stdlib.h>
 
 # ifndef BONUS
 #  define BONUS 0
@@ -33,9 +33,9 @@ typedef struct s_player
 
 typedef struct s_count
 {
-	int			count_P;
-	int			count_E;
-	int			count_C;
+	int			count_p;
+	int			count_e;
+	int			count_c;
 }				t_count;
 
 typedef struct s_imgs
@@ -65,7 +65,7 @@ typedef struct s_vars64
 	t_count		count;
 }				t_vars;
 
-enum			keys
+enum			e_keys
 {
 	KEY_ESC = 65307,
 	KEY_W = 119,

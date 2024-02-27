@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:56:12 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/16 17:57:57 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:36:00 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(int ac, char **av)
 {
 	t_vars	vars;
 
-	(void)ac;
+	if (ac != 2)
+		exit(0);
 	vars.map = split_map(av[1]);
 	check_size(&vars);
 	error_map(&vars);

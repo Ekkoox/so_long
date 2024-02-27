@@ -6,7 +6,7 @@
 /*   By: enschnei <enschnei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:31:42 by enschnei          #+#    #+#             */
-/*   Updated: 2024/02/15 18:23:37 by enschnei         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:48:06 by enschnei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,6 @@ int	wall_colision(t_vars *vars, int move_x, int move_y)
 	if (count_object(vars) != 0 && vars->map[new_y][new_x] == 'E')
 		return (1);
 	return (0);
-}
-
-int	count_object(t_vars *vars)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	x = 0;
-	vars->count.count_C = 0;
-	while (vars->map[y] != NULL)
-	{
-		while (vars->map[y][x])
-		{
-			if (vars->map[y][x] == 'C')
-				vars->count.count_C++;
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	return (vars->count.count_C);
 }
 
 int	finish_map(t_vars *vars)
